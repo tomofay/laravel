@@ -1,0 +1,16 @@
+@extends('fe.master')
+    @section('page_title')
+        @include('fe.page_title')
+    @endsection
+    @section('service')
+        @include('fe.service')
+    @endsection
+    @section('testimonials')
+        @include('fe.testimonials')
+    @endsection
+    @section('pricing')
+        @include('fe.pricing')
+    @endsection
+    @section('divider')
+        @include('fe.divider')
+    @endsection
