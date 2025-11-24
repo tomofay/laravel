@@ -9,7 +9,7 @@ class laporanController extends Controller
     function lap_service_schedule_index(){
         return view('laporan.service-schedule',[
             'title' => 'service schedule report',
-            'doctors' => Doctors::all(),
+            'doctors' => doctors::all(),
         ]);
     }
 

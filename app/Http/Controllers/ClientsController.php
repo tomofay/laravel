@@ -10,7 +10,7 @@ class ClientsController extends Controller
     // Tampilkan semua data clients
     public function index()
     {
-        $datas = Clients::all();
+        $datas = clients::all();
         $title = 'Clients'; // Tambahkan ini
         return view('clients.index', compact('datas', 'title'));
     }
@@ -18,7 +18,7 @@ class ClientsController extends Controller
     // Toggle status Aktif/Tidak Aktif
     public function toggleStatus($id)
     {
-        $clients = Clients::findOrFail($id);
+        $clients = clients::findOrFail($id);
         $clients->Status = $clients->Status == 'Aktif' ? 'Tidak Aktif' : 'Aktif';
         $clients->save();
 

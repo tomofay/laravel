@@ -18,7 +18,7 @@ class HeroController extends Controller
         //
        return view('hero.index', [
         'title' => 'Hero',
-        'datas' => Hero::all(),
+        'datas' => hero::all(),
         ]);
     }
 
@@ -52,7 +52,7 @@ class HeroController extends Controller
     ]);
     $data['aktif'] = $aktif;
     $data['url_image'] = $request->file('url_image')->store('hero');
-    Hero::create($data);
+    hero::create($data);
     return redirect()->route('hero.index')->with('success', 'Data Berhasil Ditambahkan');
 }
 
@@ -69,7 +69,7 @@ class HeroController extends Controller
      */
     public function edit(string $id)
 {
-    $hero = Hero::findOrFail($id);
+    $hero = hero::findOrFail($id);
     return view('hero.edit', [
         'title' => 'Hero', // Ubah dari 'Edit Hero' ke 'Hero'
         'hero' => $hero
