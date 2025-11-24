@@ -12,7 +12,7 @@ class DoctorsController extends Controller
     public function index()
     {
         // Ambil semua dokter aktif, urutkan dari yang paling lama
-        $aktifDoctors = doctors::where('status', 1)->orderBy('id')->get();
+        $aktifDoctors = Doctors::where('status', 1)->orderBy('id')->get();
 
         // Jika lebih dari 4, nonaktifkan yang terlama
         if ($aktifDoctors->count() > 4) {
@@ -23,7 +23,7 @@ class DoctorsController extends Controller
         }
 
         // Ambil semua data untuk ditampilkan
-        $datas = doctors::all();
+        $datas = Doctors::all();
 
         return view('doctors.index', [
             'title' => 'Doctors',
@@ -61,7 +61,7 @@ class DoctorsController extends Controller
 
         // Batas maksimal 4 dokter aktif
         if ($data['status'] === 1) {
-            $aktifDoctors = doctors::where('status', 1)->orderBy('id')->get();
+            $aktifDoctors = Doctors::where('status', 1)->orderBy('id')->get();
             if ($aktifDoctors->count() >= 4) {
                 $firstActive = $aktifDoctors->first();
                 if ($firstActive) {
@@ -70,7 +70,7 @@ class DoctorsController extends Controller
             }
         }
 
-        doctors::create($data);
+        Doctors::create($data);
 
         return redirect()->route('doctors.index')->with('success', 'Data Berhasil Ditambahkan');
     }
@@ -82,19 +82,19 @@ class DoctorsController extends Controller
 
     public function edit($id)
     {
-        $data = doctors::findOrFail($id);
+        $data = Doctors::findOrFail($id);
         $title = 'Doctors';
         return view('doctors.edit', compact('data', 'title'));
     }
 
     public function update(Request $request, $id)
     {
-        $doctor = doctors::findOrFail($id);
+        $doctor = Doctors::findOrFail($id);
         $data = $request->except('foto');
 
         // Jika status berubah menjadi aktif
         if (isset($data['status']) && (int)$data['status'] === 1 && (int)$doctor->status !== 1) {
-            $aktifDoctors = doctors::where('status', 1)->orderBy('id')->get();
+            $aktifDoctors = Doctors::where('status', 1)->orderBy('id')->get();
             if ($aktifDoctors->count() >= 4) {
                 $firstActive = $aktifDoctors->first();
                 if ($firstActive) {
@@ -119,7 +119,7 @@ class DoctorsController extends Controller
 
     public function destroy(string $id)
     {
-        $doctor = doctors::findOrFail($id);
+        $doctor = Doctors::findOrFail($id);
 
         // Hapus file foto jika ada (pakai disk 'public' sesuai penyimpanan)
         if ($doctor->foto && Storage::disk('public')->exists($doctor->foto)) {

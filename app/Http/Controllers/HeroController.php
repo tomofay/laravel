@@ -18,7 +18,7 @@ class HeroController extends Controller
         //
        return view('hero.index', [
         'title' => 'Hero',
-        'datas' => hero::all(),
+        'datas' => Hero::all(),
         ]);
     }
 
@@ -52,7 +52,7 @@ class HeroController extends Controller
     ]);
     $data['aktif'] = $aktif;
     $data['url_image'] = $request->file('url_image')->store('hero');
-    hero::create($data);
+    Hero::create($data);
     return redirect()->route('hero.index')->with('success', 'Data Berhasil Ditambahkan');
 }
 
@@ -69,7 +69,7 @@ class HeroController extends Controller
      */
     public function edit(string $id)
 {
-    $hero = hero::findOrFail($id);
+    $hero = Hero::findOrFail($id);
     return view('hero.edit', [
         'title' => 'Hero', // Ubah dari 'Edit Hero' ke 'Hero'
         'hero' => $hero
@@ -116,8 +116,8 @@ class HeroController extends Controller
         $hero = Hero::findOrFail($id);
 
         // Hapus file gambar jika ada
-        if ($hero->url_image && Storage::exists($hero->url_image)) {
-            Storage::delete($hero->url_image);
+        if ($hero->url_image && \Storage::exists($hero->url_image)) {
+            \Storage::delete($hero->url_image);
         }
 
         $hero->delete();
