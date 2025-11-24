@@ -116,8 +116,8 @@ class HeroController extends Controller
         $hero = Hero::findOrFail($id);
 
         // Hapus file gambar jika ada
-        if ($hero->url_image && \Storage::exists($hero->url_image)) {
-            \Storage::delete($hero->url_image);
+        if ($hero->url_image && Storage::exists($hero->url_image)) {
+            Storage::delete($hero->url_image);
         }
 
         $hero->delete();
