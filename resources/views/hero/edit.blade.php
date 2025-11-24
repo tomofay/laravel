@@ -69,7 +69,7 @@
               <label for="aktif" class="col-sm-1 col-form-label">Tampilkan</label>
               <div class="col-sm-6">
                 <div class="form-check">
-                  <input class="form-check-input" name="aktif" type="checkbox" id="aktif" {{ $hero->aktif ? 'checked' : '' }}>
+                  <input class="form-check-input" name="aktif" type="checkbox" id="aktif" value="on" {{ $hero->aktif ? 'checked' : '' }}>
                   <label class="form-check-label" for="aktif" id="lblAktif">{{ $hero->aktif ? 'Aktif' : 'Tidak Aktif' }}</label>
                 </div>
               </div>

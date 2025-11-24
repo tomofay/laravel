@@ -20,8 +20,9 @@ return new class extends Migration
             $table->enum('jk', ['L', 'P']);
             $table->string('alamat');
             $table->string('telepon', 15);
-            $table->enum('agama', ['I', 'H', 'K', 'B', 'P', 'L']);
+            $table->enum('agama', ['Islam', 'Hindu', 'Kristen', 'Buddha', 'Protestan', 'Katolik']);
             $table->string('foto');
+            $table->tinyInteger('status')->default(0);
             $table->timestamps();
 
 

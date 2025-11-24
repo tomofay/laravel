@@ -43,7 +43,6 @@ class HeroController extends Controller
     } else {
         $aktif = 0;
     }
-
     $data = $request->only([
         'judul1',
         'judul2',
@@ -69,10 +68,10 @@ class HeroController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
-   {
+{
     $hero = Hero::findOrFail($id);
     return view('hero.edit', [
-        'title' => 'Edit Hero',
+        'title' => 'Hero', // Ubah dari 'Edit Hero' ke 'Hero'
         'hero' => $hero
     ]);
 }

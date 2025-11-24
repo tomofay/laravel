@@ -19,10 +19,10 @@ return new class extends Migration
             $table->foreign('id_dokter')->references('id')->on('doctors')->onUpdate('cascade')->onDelete('cascade');
             $table->string('nama_layanan');
             $table->string('foto1');            
-            $table->string('foto2');
-            $table->string('foto3');
-            $table->string('foto4');
-            $table->string('foto5');
+            $table->string('foto2')->nullable();
+            $table->string('foto3')->nullable();
+            $table->string('foto4')->nullable();
+            $table->string('foto5')->nullable();
             $table->integer('biaya_layanan');
             $table->timestamps();
         });

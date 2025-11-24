@@ -422,19 +422,72 @@
                   
                 
               </li>
-              <li class="sidebar-item">
+
+               <li class="sidebar-item">
                 <a
-                  class="sidebar-link waves-effect waves-dark @if ($title === 'Swiper Slider') active @endif"
-
-
-                  href="grid.html"
+                  class="sidebar-link waves-effect waves-dark sidebar-link @if ($title === 'Doctors') active @endif"
+                  href="{{route('doctors.index')}}"
                   aria-expanded="false"
-                  ><i class="mdi mdi-receipt"></i
-                  ><span class="hide-menu">Forms </span></a
-                >
+                  ><i class="mdi mdi-blur-linear"></i
+                  ><span class="hide-menu">Doctors</span></a>
+                  
+                
               </li>
 
+              <li class="sidebar-item">
+                <a
+                  class="sidebar-link waves-effect waves-dark sidebar-link @if ($title === 'Clients') active @endif"
+                  href="{{route('clients.index')}}"
+                  aria-expanded="false"
+                  ><i class="mdi mdi-blur-linear"></i
+                  ><span class="hide-menu">Clients</span></a>
 
+              </li>
+
+              <li class="sidebar-item">
+                <a
+                  class="sidebar-link has-arrow waves-effect waves-dark"
+                  href="javascript:void(0)"
+                  aria-expanded="false"
+                  ><i class="mdi mdi-move-resize-variant"></i
+                  ><span class="hide-menu">Report </span></a
+                >
+                <ul aria-expanded="false" class="collapse first-level">
+                  <li class="sidebar-item">
+                    <a href="index2.html" class="sidebar-link"
+                      ><i class="mdi mdi-view-dashboard"></i
+                      ><span class="hide-menu"> Doctor </span></a
+                    >
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="pages-gallery.html" class="sidebar-link"
+                      ><i class="mdi mdi-multiplication-box"></i
+                      ><span class="hide-menu"> Medicine </span></a
+                    >
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="pages-calendar.html" class="sidebar-link"
+                      ><i class="mdi mdi-calendar-check"></i
+                      ><span class="hide-menu"> Service </span></a
+                    >
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="{{route('laporan.service-schedule')}}" class="sidebar-link"
+                      ><i class="mdi mdi-message-outline"></i
+                      ><span class="hide-menu"> Service Schedule </span></a
+                    >
+                  </li>
+                </ul>
+              </li>
+
+              <li class="sidebar-item">
+                <a
+                  class="sidebar-link waves-effect waves-dark sidebar-link @if ($title === 'Schedules') active @endif"
+                  href="{{route('schedules.index')}}"
+                  aria-expanded="false"
+                  ><i class="mdi mdi-calendar"></i
+                  ><span class="hide-menu">Schedules</span></a>
+              </li>
             </ul>
           </nav>
           <!-- End Sidebar navigation -->
@@ -458,7 +511,21 @@
          @yield('hero')
         @endif
 
+         @if ($title === 'Doctors')
+         @yield('doctors')
+        @endif
+
+        @if ($title === 'Clients')
+          @yield('clients')
+        @endif
+
+        @if ($title === 'service schedule report')
+          @yield('laporan.service-schedule')
+        @endif
         
+        @if ($title === 'Schedules')
+          @yield('schedules')
+        @endif
 
         {{-- Tambahkan ini di sini --}}
         @if ($errors->any())
